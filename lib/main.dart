@@ -3,8 +3,6 @@ import 'package:apod_flutter/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  final data = GetData();
-  data.getImages();
   runApp(MyApp());
 }
 
