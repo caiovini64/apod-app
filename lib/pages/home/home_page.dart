@@ -1,5 +1,4 @@
 import 'package:apod_flutter/network/get_data.dart';
-import 'package:apod_flutter/pages/home/widgets/date_picker.dart';
 import 'package:apod_flutter/pages/home/widgets/day_picture.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +22,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            DatePicker(),
             DayPicture(data: data),
           ],
         ),
