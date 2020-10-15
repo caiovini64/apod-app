@@ -1,68 +1,32 @@
 import 'package:apod_flutter/network/get_data.dart';
+import 'package:apod_flutter/pages/home/widgets/date_picker.dart';
+import 'package:apod_flutter/pages/home/widgets/day_picture.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  DateTime selectedDate = DateTime.now();
   final data = GetData();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: FutureBuilder(
-        future: data.getImages(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Image(
-                    width: 500,
-                    image: NetworkImage(snapshot.data['url']),
-                  ),
-                ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Text(
-                    snapshot.data['title'],
-                    style: TextStyle(fontSize: 28, color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Text(
-                    snapshot.data['copyright'],
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Text(
-                    snapshot.data['date'],
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Text(
-                    snapshot.data['explanation'],
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            );
-          } else {
-            return Container(
-              alignment: Alignment.center,
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            DatePicker(),
+            DayPicture(data: data),
+          ],
+        ),
       ),
     );
   }
