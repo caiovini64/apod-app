@@ -20,57 +20,8 @@ class _DayPictureState extends State<DayPicture> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
-          child: GestureDetector(
-              child: Container(
-                width: 500,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: Offset(0, 3),
-                    )
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        selectedDate == null
-                            ? 'Pick a date '
-                            : selectedDate.toString().substring(0, 10),
-                        style: TextStyle(
-                          color: Theme.of(context).textSelectionColor,
-                        ),
-                      ),
-                      Icon(Icons.arrow_drop_down),
-                    ],
-                  ),
-                ),
-              ),
-              onTap: () {
-                showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(1965),
-                  lastDate: DateTime.now(),
-                ).then((date) {
-                  setState(() {
-                    selectedDate = date;
-                  });
-                });
-              }),
-        ),
         FutureBuilder(
-          future: widget.data.getImages(selectedDate),
+          future: widget.data.getImages(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Column(
