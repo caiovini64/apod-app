@@ -1,12 +1,20 @@
 # apod_flutter
 
-### Funcionalidades à serem desenvolvidas na aplicação:
-- Consumo de API
-- Utilização de DatePicker
-- Utilização adequada do git
-- Organização de código
+---
 
+### Sobre
+> Aplicativo que consome [API APOD NASA](https://api.nasa.gov/) e apresenta a foto astronômica do dia.
+
+---
+
+---
+
+### DEMO
 ![Demo](Screenrecorder-2020-10-15-18-57-54-227.gif)
 
+---
 
 
+###Tecnologias utilizadas
+  - Flutter
+  - API Rest
